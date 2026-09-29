@@ -1,0 +1,41 @@
+================================================================================
+OJASRAKSHA 3,000-ROW MULTI-HOSPITAL SYNTHETIC DATASET GENERATION REPORT
+================================================================================
+Generated Records Count: 3,000 rows
+Standard: HL7 FHIR R4 / WHO ICD-10-CM / DPDP Act 2023 / Hedera HCS Topic 0.0.4891024
+Output File: C:\Users\pulig\OneDrive\Desktop\ojas\Hedera-APEX-Hackathon\scripts\synthetic_dataset_3000.json
+
+--------------------------------------------------------------------------------
+1. DISTRIBUTION BY HEALTHCARE ORGANIZATION & HOSPITAL-SPECIFIC RULES
+--------------------------------------------------------------------------------
+ - Max Super Speciality Cancer Institute           : 600 rows (20.0%)
+ - Fortis Memorial Neuro & Trauma Center           : 600 rows (20.0%)
+ - Care & Cure Pediatric & Maternity Hospital      : 600 rows (20.0%)
+ - Apex Diagnostic & Pathology Reference Labs      : 600 rows (20.0%)
+ - Apollo Multispecialty Hospital                  : 600 rows (20.0%)
+
+--------------------------------------------------------------------------------
+2. DISTRIBUTION BY CLINICAL CATEGORY (ICD-10-CM)
+--------------------------------------------------------------------------------
+ - Oncology                           : 700 rows (23.3%)
+ - Cardiology                         : 477 rows (15.9%)
+ - Obstetrics & Gynecology            : 233 rows (7.8%)
+ - Endocrinology                      : 551 rows (18.4%)
+ - Neonatology                        : 234 rows (7.8%)
+ - Neurology                          : 238 rows (7.9%)
+ - Pediatrics                         : 233 rows (7.8%)
+ - Infectious Disease                 : 183 rows (6.1%)
+ - Trauma & Emergency                 : 118 rows (3.9%)
+ - Gastroenterology                   : 33 rows (1.1%)
+
+--------------------------------------------------------------------------------
+3. DISTRIBUTION BY DPDP CONSENT & GOVERNANCE STATE
+--------------------------------------------------------------------------------
+ - ACTIVE                             : 2185 rows (72.8%)
+ - BREAK_GLASS_EMERGENCY_OVERRIDE     : 663 rows (22.1%)
+ - REVOKED_BY_PATIENT                 : 80 rows (2.7%)
+ - EXPIRED_TTL                        : 72 rows (2.4%)
+
+================================================================================
+Cryptographic Verification: 100% AES-256-GCM Envelopes, 96-bit IVs, 128-bit Tags
+================================================================================

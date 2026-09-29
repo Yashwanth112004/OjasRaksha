@@ -30,39 +30,23 @@ const saveToLocalVault = (payload, name) => {
 };
 
 /**
- * Encrypts a JSON payload symmetrically via HashiCorp Vault Transit Engine
+ * Encrypts a JSON payload symmetrically via HashiCorp Vault Transit Engine (AES-256-GCM)
  * @param {Object} data - The medical data to encrypt
  * @param {string} userOrKey - Identity address or key
- * @returns {string} - AES-256-GCM encrypted string
+ * @returns {string} - AES-256-GCM encrypted envelope string
  */
 export const encryptData = (data, userOrKey = DEFAULT_VAULT_KEY) => {
-    try {
-        return vaultEncrypt(data, userOrKey);
-    } catch (e) {
-        // Fallback to direct AES if vault error
-        return CryptoJS.AES.encrypt(JSON.stringify(data), userOrKey).toString();
-    }
+    return vaultEncrypt(data, userOrKey);
 };
 
 /**
- * Decrypts a payload back to JSON via HashiCorp Vault Transit Engine
+ * Decrypts a payload back to JSON via HashiCorp Vault Transit Engine (AES-256-GCM)
  * @param {string} encryptedText 
  * @param {string} userOrKey 
  * @returns {Object}
  */
 export const decryptData = (encryptedText, userOrKey = DEFAULT_VAULT_KEY) => {
-    try {
-        return vaultDecrypt(encryptedText, userOrKey);
-    } catch (error) {
-        try {
-            const bytes = CryptoJS.AES.decrypt(encryptedText, userOrKey);
-            const decryptedString = bytes.toString(CryptoJS.enc.Utf8);
-            return JSON.parse(decryptedString);
-        } catch (fallbackError) {
-            console.error("Decryption failed. Incorrect key or corrupt data.");
-            throw new Error("Unable to decrypt medical data");
-        }
-    }
+    return vaultDecrypt(encryptedText, userOrKey);
 };
 
 /**

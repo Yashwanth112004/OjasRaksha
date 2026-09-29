@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ethers } from "ethers";
 import { create } from "ipfs-http-client";
-import CryptoJS from "crypto-js";
 import { QRCodeCanvas } from "qrcode.react";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from 'react-toastify';
+import { vaultEncrypt } from "./utils/vaultCrypto";
 
 import deployedConfig from "./utils/deployedContracts.json";
 
@@ -41,11 +41,8 @@ export default function VolunteerRegister(){
         doctor: doctor
       };
 
-      /* Step 2: encrypt */
-      const encrypted = CryptoJS.AES.encrypt(
-        JSON.stringify(volunteerData),
-        "event-secret-key"
-      ).toString();
+      /* Step 2: encrypt via HashiCorp Vault Transit Engine (AES-256-GCM) */
+      const encrypted = vaultEncrypt(volunteerData, "event-secret-key");
 
       const payload = {
         data: encrypted
